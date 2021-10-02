@@ -1,26 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {TodoContext} from '../context/store';
 
-function TaskList({taskList, setTaskList}){
-
-    const toggleCompleted = (clickedTaskId) => {
-        const newList = taskList.map((item) => {
-          if(item.id === clickedTaskId) {
-            return {
-              ...item,
-              completed: !item.completed
-            }
-          } else {
-            return item
-          }
-        })
-        setTaskList(newList);
-      }
-    
-    
+function TaskList(){
+  const {todoList, toggleCompleted, clearCompleted, clearAll} = useContext(TodoContext);
     return(
         <>
         {
-          taskList.map(task => {
+          todoList.map(task => {
             return(
               <button 
                 key={task.id} 
@@ -30,6 +16,8 @@ function TaskList({taskList, setTaskList}){
             )
           })
         }
+        <button onClick={clearCompleted}>clear completed</button>
+        <button onClick={clearAll}>clear all</button>
         </>
     )
 }
