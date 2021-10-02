@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {TodoContext} from '../context/store';
 function InputTask(){
-    const {addTask, todoList, setDispatch} = useContext(TodoContext);
+    const {addTask} = useContext(TodoContext);
     const [inputTask, setInputTask] = useState('');
     function handleSubmit(e) {
         e.preventDefault();
